@@ -9,6 +9,7 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
@@ -37,6 +38,9 @@ public class FlowSumDriver {
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(FlowSumBean.class);
 
+            //设置combainer 一般与reducer一样
+            job.setCombinerClass(FlowSumReducer.class);
+
             //5 设置最终输出数据类型
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(FlowSumBean.class);
@@ -45,7 +49,15 @@ public class FlowSumDriver {
             FileInputFormat.setInputPaths(job, new Path(args[0]));
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-            //7 提交代码
+            //设置切片机制 默认
+            job.setInputFormatClass(TextInputFormat.class);
+
+            //设置分区
+            job.setPartitionerClass(ProvincePartitioner.class);
+//            指定相应数量的reduce task
+            job.setNumReduceTasks(5);
+
+            // 提交代码
             boolean b = job.waitForCompletion(true);
             System.exit(b?0:1);
         } catch (IOException e) {

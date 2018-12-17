@@ -26,7 +26,7 @@ public class FlowSumMapper extends Mapper<LongWritable,Text,Text,FlowSumBean> {
         String str = value.toString();
         String[] split = str.split("\t");
 
-        k.set(split[0]);
+        k.set(split[1]);
         long upFlow = Long.parseLong(split[split.length-3]);
         long downFlow = Long.parseLong(split[split.length-2]);
         v.setUpFlow(upFlow);
