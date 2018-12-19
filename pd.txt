@@ -1,1 +1,0 @@
-/tmp/hadoop-zhengyingjie/mapred/local/1545186726199/pd.txt
