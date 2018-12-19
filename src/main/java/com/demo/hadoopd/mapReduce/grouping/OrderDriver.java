@@ -1,6 +1,5 @@
-package com.demo.hadoopd.mapReduce.order;
+package com.demo.hadoopd.mapReduce.grouping;
 
-import com.demo.hadoopd.mapReduce.flowsum.FlowSumReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.NullWritable;

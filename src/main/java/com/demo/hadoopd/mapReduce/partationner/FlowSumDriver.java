@@ -1,11 +1,7 @@
-package com.demo.hadoopd.mapReduce.flowsum;
+package com.demo.hadoopd.mapReduce.partationner;
 
-import com.demo.hadoopd.mapReduce.wordcount.WordcountDriver;
-import com.demo.hadoopd.mapReduce.wordcount.WordcountMapper;
-import com.demo.hadoopd.mapReduce.wordcount.WordcountReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;

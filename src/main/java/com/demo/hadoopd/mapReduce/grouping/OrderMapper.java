@@ -1,4 +1,4 @@
-package com.demo.hadoopd.mapReduce.order;
+package com.demo.hadoopd.mapReduce.grouping;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.NullWritable;

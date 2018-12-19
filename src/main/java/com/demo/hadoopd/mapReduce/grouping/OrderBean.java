@@ -1,8 +1,7 @@
-package com.demo.hadoopd.mapReduce.order;
+package com.demo.hadoopd.mapReduce.grouping;
 
 
 import org.apache.hadoop.io.WritableComparable;
-import org.apache.hadoop.io.WritableComparator;
 
 import java.io.DataInput;
 import java.io.DataOutput;

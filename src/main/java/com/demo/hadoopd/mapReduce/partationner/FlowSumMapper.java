@@ -1,4 +1,4 @@
-package com.demo.hadoopd.mapReduce.flowsum;
+package com.demo.hadoopd.mapReduce.partationner;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
