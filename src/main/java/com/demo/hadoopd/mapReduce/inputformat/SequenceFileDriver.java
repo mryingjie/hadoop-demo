@@ -1,4 +1,4 @@
-package com.demo.hadoopd.mapReduce.wholefile;
+package com.demo.hadoopd.mapReduce.inputformat;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

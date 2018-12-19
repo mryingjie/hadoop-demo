@@ -1,4 +1,4 @@
-package com.demo.hadoopd.mapReduce.wholefile;
+package com.demo.hadoopd.mapReduce.inputformat;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
@@ -12,6 +12,7 @@ import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -39,20 +40,22 @@ public class WholeFileRecordReader extends RecordReader<NullWritable, BytesWrita
     public boolean nextKeyValue() throws IOException, InterruptedException {
         if(!processed){
             //1 定义缓冲区
-            byte[] buff = new byte[this.values.getLength()];
+            byte[] buff = new byte[(int) fileSplit.getLength()];
 
             FileSystem fileSystem = null;
             FSDataInputStream fis = null;
             try{
-                //2 获取文件系统
+//                //2 获取文件系统
                 Path path = fileSplit.getPath();
                 fileSystem = path.getFileSystem(this.configuration);
-
-                //3 读取数据
+//
+//                //3 读取数据
                 fis = fileSystem.open(path);
+//                String substring = path.toString().substring(6);
+//                fis = new FileInputStream(new File(substring));
 
                 //4 读取文件内容
-                IOUtils.readFully(fis, buff, 0, this.values.getLength());
+                IOUtils.readFully(fis, buff, 0, buff.length);
 
                 // 5 输出文件内容
                 values.set(buff, 0, buff.length);
@@ -87,5 +90,11 @@ public class WholeFileRecordReader extends RecordReader<NullWritable, BytesWrita
     @Override
     public void close() throws IOException {
 
+    }
+
+    public static void main(String[] args) {
+        File file  = new File("E:\\demo\\hadoopdemo\\src\\main\\resources\\input\\inputformat\\three.txt");
+//        file.getPath();
+        System.out.println(file.getPath());
     }
 }

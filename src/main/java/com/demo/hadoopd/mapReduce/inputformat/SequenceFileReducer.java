@@ -1,4 +1,4 @@
-package com.demo.hadoopd.mapReduce.wholefile;
+package com.demo.hadoopd.mapReduce.inputformat;
 
 import org.apache.hadoop.io.BytesWritable;
 import org.apache.hadoop.io.Text;
